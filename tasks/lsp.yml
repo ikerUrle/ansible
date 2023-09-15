@@ -1,0 +1,7 @@
+- name: Install prettierd
+  npm: 
+    name: prettierd
+    global: true
+  become: true
+  tags:
+    - node
