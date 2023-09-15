@@ -26,7 +26,18 @@
 - name: Install packages
   become: true
   apt:
-    name: [ "tmux", "fzf", "xclip", "tldr", "ripgrep", "shutter" ]
+    name: [ "tmux", "fzf", "xclip", "tldr", "ripgrep", "shutter", "fd-find" ]
   tags:
     - install
     - productivity
+- name: Download installer rustup
+  ansible.builtin.get_url:
+    url: "https://sh.rustup.rs"
+    dest: "/tmp/rustup.sh"
+    mode: "750"
+    validate_certs: no
+
+- name: Run installer rustup
+  ansible.builtin.command:
+    cmd: "./rustup.sh -y"
+    chdir: "/tmp"
