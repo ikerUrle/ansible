@@ -5,3 +5,10 @@
   become: true
   tags:
     - node
+- name: Install eslint_d 
+  npm: 
+    name: eslint_d 
+    global: true
+  become: true
+  tags:
+    - node
