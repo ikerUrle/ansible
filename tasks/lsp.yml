@@ -1,6 +1,6 @@
 - name: Install prettierd
   npm: 
-    name: prettierd
+    name: "@fsouza/prettierd"
     global: true
   become: true
   tags:

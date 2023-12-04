@@ -26,7 +26,7 @@
 - name: Install packages
   become: true
   apt:
-    name: [ "tmux", "fzf", "xclip", "tldr", "ripgrep", "shutter", "fd-find" ]
+    name: [ "tmux", "fzf", "xclip", "tldr", "ripgrep", "fd-find" ]
   tags:
     - install
     - productivity
