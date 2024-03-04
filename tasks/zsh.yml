@@ -31,6 +31,13 @@
   tags:
     - zsh
 
+- name: Cloning  oh-my-zsh autosuggestions
+  git:
+    repo=https://github.com/zsh-users/zsh-autosuggestions
+    dest=~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+  tags:
+    - zsh
+
 - name: Deleting old ~/.zshrc
   ansible.builtin.command:
     cmd: "rm ~/.zshrc"
