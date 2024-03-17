@@ -3,33 +3,25 @@
   apt:
     name: ["build-essential", "cmake", "pkg-config", "libpthread-stubs0-dev"]
   tags:
-    - install
-    - neovim
-    - core
+    - ubuntu
 - name: Install System Packages 2 (lua, unzip, libtool, libtool-bin, gettext)
   become: true
   apt:
     name: [ "lua5.1", "unzip", "libtool", "libtool-bin", "gettext", "ninja-build"]
   tags:
-    - install
-    - neovim
-    - core
+    - ubuntu
 - name: Install System Packages 2
   become: true
   apt:
     name: ["curl", "python3-pip", "golang"]
   tags:
-    - install
-    - neovim
-    - core
-
+    - ubuntu
 - name: Install packages
   become: true
   apt:
     name: [ "tmux", "fzf", "xclip", "tldr", "ripgrep", "fd-find" ]
   tags:
-    - install
-    - productivity
+    - ubuntu
 - name: Download installer rustup
   ansible.builtin.get_url:
     url: "https://sh.rustup.rs"

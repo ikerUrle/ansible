@@ -5,6 +5,15 @@
     - install
     - dotfiles
     - stow
+    - ubuntu 
+- name: Installing stow
+  become: true
+  pacman: name=stow
+  tags:
+    - install
+    - dotfiles
+    - stow
+    - arch 
 - name: Cloning .dotfiles
   ansible.builtin.git:
     repo: 'https://github.com/ikerUrle/.dotfiles.git'
@@ -17,7 +26,6 @@
     - install
     - dotfiles
     - stow
-
 - name: Make install executable
   shell: chmod u+x $HOME/.dotfiles/install 
   tags:
