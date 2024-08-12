@@ -1,8 +1,3 @@
-- name: Install zsh
-  apt: name=zsh
-  become: true
-  tags:
-    - zsh
 - name: Change shell to zsh for user "{{the_user}}"
   become: true
   user:

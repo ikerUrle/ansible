@@ -1,6 +1,6 @@
 # Ansible configuration scripts
 
-Ubuntu ansible installation:
+## Ubuntu:
 
     sudo apt-add-repository ppa:ansible/ansible
 
@@ -8,6 +8,12 @@ Ubuntu ansible installation:
 
     sudo apt install ansible
 
-To setup local environment:
+    ansible-pull -U git@github.com:ikerUrle/ansible.git --ask-become-pass
+
+## Arch Linux:
+
+    sudo pacman -S ansible
 
     ansible-pull -U git@github.com:ikerUrle/ansible.git --ask-become-pass
+
+

@@ -1,0 +1,39 @@
+- name: Install System Packages 
+  become: true
+  community.general.pacman:
+    name: ["unzip","go","tmux","fzf","xclip", "tldr", "ripgrep", "fd" ]
+  tags:
+    - install
+    - neovim
+    - core
+- name: Install Zsh 
+  become: true
+  community.general.pacman:
+    name: "zsh"
+  tags:
+    - install
+    - neovim
+    - core
+- name: Install node
+  become: true
+  community.general.pacman:
+    name: ['nodejs','npm']
+  tags:
+    - node
+- name: Install stow
+  become: true
+  community.general.pacman:
+    name: "stow"
+  tags:
+    - node
+- name: Download installer rustup
+  ansible.builtin.get_url:
+    url: "https://sh.rustup.rs"
+    dest: "/tmp/rustup.sh"
+    mode: "750"
+    validate_certs: no
+
+- name: Run installer rustup
+  ansible.builtin.command:
+    cmd: "./rustup.sh -y"
+    chdir: "/tmp"

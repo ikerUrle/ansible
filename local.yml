@@ -2,18 +2,14 @@
   become: false
   vars:
     the_user: "{{ ansible_user_id }}"
-  pre_tasks:
-    - name: Update apt cache
-      become: true
-      tags:
-        - zsh
-        - node
-      apt:
-        update_cache: true
   tasks:
-    - include_tasks: tasks/essentials.yml
+    - name: Arch install
+      when: ansible_facts['os_family'] == "Archlinux"
+      include_tasks: tasks/00_arch_essentials.yml
+    - name: Ubuntu install
+      when: ansible_facts['os_family'] == "Debian"
+      include_tasks: tasks/00_ubuntu_essentials.yml
     - include_tasks: tasks/zsh.yml
     - include_tasks: tasks/node.yml
-    - include_tasks: tasks/nvim.yml
     - include_tasks: tasks/dotfiles.yml
     - include_tasks: tasks/lsp.yml

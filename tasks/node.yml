@@ -1,9 +1,3 @@
-- name: Install node
-  become: true
-  apt: 
-    name: ['nodejs','npm']
-  tags:
-    - node
 - name: Install n 
   npm: 
     name: n
