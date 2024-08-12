@@ -32,8 +32,21 @@
     dest: "/tmp/rustup.sh"
     mode: "750"
     validate_certs: no
-
 - name: Run installer rustup
   ansible.builtin.command:
     cmd: "./rustup.sh -y"
     chdir: "/tmp"
+- name: Cloning yay
+  ansible.builtin.git:
+    repo: 'https://aur.archlinux.org/yay.git'
+    dest: "/tmp/yay"
+  tags:
+    - install
+    - dotfiles
+    - stow
+- name: Install yay
+  shell: cd /tmp/yay && makepkg -si --noconfirm
+  tags:
+    - install
+    - dotfiles
+    - stow
