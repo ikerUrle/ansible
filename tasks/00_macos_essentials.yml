@@ -1,0 +1,28 @@
+- name: Install node
+  homebrew: 
+    name: ['nodejs','npm'] 
+    state: present
+  tags:
+    - node
+- name: Install stow 
+  homebrew: 
+    name: 'stow'
+    state: present
+  tags:
+    - node
+- name: Install system libs
+  homebrew: 
+    name: ["unzip","go","tmux","fzf","ripgrep", "fd" ]
+    state: present
+  tags:
+    - node
+- name: Download installer rustup
+  ansible.builtin.get_url:
+    url: "https://sh.rustup.rs"
+    dest: "/tmp/rustup.sh"
+    mode: "750"
+    validate_certs: no
+- name: Run installer rustup
+  ansible.builtin.command:
+    cmd: "./rustup.sh -y"
+    chdir: "/tmp"

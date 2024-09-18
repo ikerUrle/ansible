@@ -9,6 +9,9 @@
     - name: Ubuntu install
       when: ansible_facts['os_family'] == "Debian"
       include_tasks: tasks/00_ubuntu_essentials.yml
+    - name: MacOS install
+      when: ansible_facts['os_family'] == "Darwin"
+      include_tasks: tasks/00_macos_essentials.yml
     - include_tasks: tasks/zsh.yml
     - include_tasks: tasks/node.yml
     - include_tasks: tasks/dotfiles.yml
